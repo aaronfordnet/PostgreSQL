@@ -1,16 +1,20 @@
-const settings = require("./settings"); // settings.json
+const knexConfig = require('./knexfile');
+const env = 'development';
+const knex = require('knex')(knexConfig[env]);
 
-const knex = require('knex')({
-  client: 'pg',
-  connection: {
-    host     : settings.hostname,
-    user     : settings.user,
-    password : settings.password,
-    database : settings.database,
-    port     : settings.port,
-    ssl      : settings.ssl
-  }
-});
+// const settings = require("./settings"); // settings.json
+//
+// const knex = require('knex')({
+//   client: 'pg',
+//   connection: {
+//     host     : settings.hostname,
+//     user     : settings.user,
+//     password : settings.password,
+//     database : settings.database,
+//     port     : settings.port,
+//     ssl      : settings.ssl
+//   }
+// });
 
 // User input
 const userQuery = process.argv[2];
